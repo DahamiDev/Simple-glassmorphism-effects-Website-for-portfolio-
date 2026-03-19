@@ -26,7 +26,7 @@
         font-family: "Quicksand", sans-serif;
         background: linear-gradient(
           180deg,
-          #fefefe 3%,
+          #fefefe 0%,
           #fff9f0 50%,
           #fff5e6 100%
         );
@@ -47,47 +47,63 @@
         overflow: hidden;
       }
 
-      /* Floating Flowers */
+      /* Floating Flowers - Real Images */
       .flower {
         position: absolute;
-        font-size: 35px;
+        width: 80px;
+        height: 80px;
         animation: floatFlower 15s infinite ease-in-out;
-        opacity: 0.7;
+        opacity: 0.8;
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+      }
+
+      .flower img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
       }
 
       .flower-1 {
         top: 10%;
         left: 5%;
         animation-delay: 0s;
+        width: 90px;
+        height: 90px;
       }
       .flower-2 {
         top: 25%;
         right: 8%;
         animation-delay: 2s;
-        font-size: 40px;
+        width: 100px;
+        height: 100px;
       }
       .flower-3 {
         top: 50%;
         left: 10%;
         animation-delay: 4s;
-        font-size: 30px;
+        width: 85px;
+        height: 85px;
       }
       .flower-4 {
         bottom: 15%;
         right: 12%;
         animation-delay: 1s;
-        font-size: 45px;
+        width: 95px;
+        height: 95px;
       }
       .flower-5 {
         bottom: 30%;
         left: 8%;
         animation-delay: 3s;
+        width: 88px;
+        height: 88px;
       }
       .flower-6 {
         top: 70%;
         right: 15%;
         animation-delay: 5s;
-        font-size: 38px;
+        width: 92px;
+        height: 92px;
       }
 
       @keyframes floatFlower {
@@ -109,12 +125,15 @@
       /* Sparkles */
       .sparkle {
         position: absolute;
-        width: 8px;
-        height: 8px;
-        background: var(--sparkle-gold);
-        border-radius: 50%;
-        animation: sparkleAnim 3s infinite ease-in-out;
-        box-shadow: 0 0 10px var(--sparkle-gold);
+        width: 50px;
+        height: 50px;
+        animation: sparkleFloat 4s infinite ease-in-out;
+      }
+
+      .sparkle img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
       }
 
       .sparkle-1 {
@@ -143,100 +162,125 @@
         animation-delay: 1.5s;
       }
 
-      @keyframes sparkleAnim {
+      @keyframes sparkleFloat {
         0%,
         100% {
-          opacity: 1;
-          transform: scale(1);
+          opacity: 0.7;
+          transform: translateY(0) scale(1);
         }
         50% {
-          opacity: 0.3;
-          transform: scale(1.5);
+          opacity: 1;
+          transform: translateY(-15px) scale(1.1);
+        }
+      }
+
+      /* Butterflies */
+      .butterfly {
+        position: absolute;
+        width: 70px;
+        height: 70px;
+        animation: butterflyFly 25s infinite ease-in-out;
+      }
+
+      .butterfly img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .butterfly-1 {
+        top: 20%;
+        left: 15%;
+        animation-delay: 0s;
+      }
+      .butterfly-2 {
+        bottom: 30%;
+        right: 20%;
+        animation-delay: 8s;
+      }
+
+      @keyframes butterflyFly {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        25% {
+          transform: translate(120px, -60px) rotate(10deg);
+        }
+        50% {
+          transform: translate(240px, 0) rotate(-10deg);
+        }
+        75% {
+          transform: translate(120px, 60px) rotate(5deg);
         }
       }
 
       /* Tinkerbell Character */
       .tinkerbell {
         position: fixed;
-        width: 120px;
-        height: 120px;
-        background: radial-gradient(
-          circle,
-          var(--fairy-yellow),
-          var(--fairy-green)
-        );
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 60px;
+        width: 180px;
+        height: 180px;
         z-index: 1000;
         transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 10px 40px rgba(127, 214, 125, 0.4);
         cursor: pointer;
+        filter: drop-shadow(0 15px 50px rgba(127, 214, 125, 0.6));
+      }
+
+      .tinkerbell img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
       }
 
       .tinkerbell::before {
-        content: "✨";
-        position: absolute;
-        top: -15px;
-        right: -15px;
-        font-size: 25px;
-        animation: sparkleRotate 2s infinite;
-      }
-
-      .tinkerbell::after {
         content: "";
         position: absolute;
-        width: 140px;
-        height: 140px;
-        border: 2px dashed var(--fairy-yellow);
+        width: 220px;
+        height: 220px;
+        border: 3px dashed var(--fairy-yellow);
         border-radius: 50%;
-        opacity: 0.3;
+        opacity: 0.4;
         animation: pulse 2s infinite;
-      }
-
-      @keyframes sparkleRotate {
-        0%,
-        100% {
-          transform: rotate(0deg) scale(1);
-        }
-        50% {
-          transform: rotate(180deg) scale(1.2);
-        }
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
       }
 
       @keyframes pulse {
         0%,
         100% {
-          transform: scale(1);
-          opacity: 0.3;
+          transform: translate(-50%, -50%) scale(1);
+          opacity: 0.4;
         }
         50% {
-          transform: scale(1.2);
-          opacity: 0.6;
+          transform: translate(-50%, -50%) scale(1.15);
+          opacity: 0.7;
         }
       }
 
       /* Pixie Dust Trail */
       .pixie-dust {
         position: absolute;
-        width: 4px;
-        height: 4px;
-        background: var(--sparkle-gold);
-        border-radius: 50%;
+        width: 35px;
+        height: 35px;
         pointer-events: none;
-        animation: dustFade 1s forwards;
+        animation: dustFade 1.5s forwards;
+      }
+
+      .pixie-dust img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
       }
 
       @keyframes dustFade {
         0% {
           opacity: 1;
-          transform: translateY(0);
+          transform: translateY(0) scale(1) rotate(0deg);
         }
         100% {
           opacity: 0;
-          transform: translateY(30px);
+          transform: translateY(50px) scale(0.3) rotate(360deg);
         }
       }
 
@@ -255,8 +299,8 @@
         position: sticky;
         top: 0;
         z-index: 100;
-        background: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(15px);
         border-bottom: 3px solid var(--fairy-pink);
         box-shadow: 0 4px 20px rgba(255, 182, 217, 0.2);
       }
@@ -279,6 +323,24 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         animation: shimmer 3s infinite;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .logo img {
+        width: 50px;
+        height: 50px;
+        animation: rotate 4s infinite linear;
+      }
+
+      @keyframes rotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
       }
 
       @keyframes shimmer {
@@ -306,22 +368,9 @@
         position: relative;
       }
 
-      .nav-links a::after {
-        content: "🌸";
-        position: absolute;
-        bottom: -20px;
-        left: 50%;
-        transform: translateX(-50%) scale(0);
-        transition: transform 0.3s;
-        font-size: 12px;
-      }
-
-      .nav-links a:hover::after {
-        transform: translateX(-50%) scale(1);
-      }
-
       .nav-links a:hover {
         color: var(--fairy-green);
+        transform: translateY(-2px);
       }
 
       /* Hero Section */
@@ -378,6 +427,7 @@
         display: flex;
         gap: 20px;
         justify-content: center;
+        flex-wrap: wrap;
       }
 
       .btn-fairy {
@@ -436,11 +486,14 @@
       }
 
       .magic-card::before {
-        content: "✨";
+        content: "";
         position: absolute;
-        top: 20px;
-        right: 20px;
-        font-size: 30px;
+        top: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+        background: url("https://i.pinimg.com/originals/68/14/48/68144878f31ff0e4c184e5c3e21f10b7.png")
+          center/contain no-repeat;
         opacity: 0.3;
       }
 
@@ -471,10 +524,14 @@
       }
 
       .section-title h2::after {
-        content: "🌼";
+        content: "";
         position: absolute;
-        top: -10px;
-        right: -40px;
+        top: -20px;
+        right: -60px;
+        width: 50px;
+        height: 50px;
+        background: url("https://i.pinimg.com/originals/68/14/48/68144878f31ff0e4c184e5c3e21f10b7.png")
+          center/contain no-repeat;
         animation: spin 4s infinite linear;
       }
 
@@ -500,8 +557,8 @@
       }
 
       .skill-icon {
-        width: 80px;
-        height: 80px;
+        width: 100px;
+        height: 100px;
         background: linear-gradient(
           135deg,
           var(--fairy-yellow),
@@ -511,10 +568,16 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 40px;
         margin: 0 auto 20px;
         box-shadow: 0 8px 25px rgba(255, 230, 102, 0.4);
         animation: bounce 2s infinite;
+        overflow: hidden;
+      }
+
+      .skill-icon img {
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
       }
 
       @keyframes bounce {
@@ -573,27 +636,14 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 80px;
         position: relative;
+        overflow: hidden;
       }
 
-      .project-image::before {
-        content: "✨";
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        font-size: 30px;
-        animation: twinkle 1.5s infinite;
-      }
-
-      @keyframes twinkle {
-        0%,
-        100% {
-          opacity: 1;
-        }
-        50% {
-          opacity: 0.3;
-        }
+      .project-image img {
+        width: 85%;
+        height: 85%;
+        object-fit: contain;
       }
 
       .project-content {
@@ -677,11 +727,14 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 30px;
-        color: white;
         text-decoration: none;
         transition: all 0.3s;
         box-shadow: 0 8px 25px rgba(127, 214, 125, 0.3);
+      }
+
+      .contact-link img {
+        width: 35px;
+        height: 35px;
       }
 
       .contact-link:hover {
@@ -731,6 +784,7 @@
         }
         .nav-links {
           gap: 20px;
+          font-size: 14px;
         }
         .contact-box {
           padding: 40px 20px;
@@ -738,36 +792,128 @@
         .container {
           padding: 0 20px;
         }
+        .tinkerbell {
+          width: 120px;
+          height: 120px;
+        }
+        .flower {
+          width: 60px !important;
+          height: 60px !important;
+        }
+        .butterfly {
+          width: 50px;
+          height: 50px;
+        }
       }
     </style>
   </head>
   <body>
     <!-- Nature Background -->
     <div class="nature-background">
-      <!-- Flowers -->
-      <div class="flower flower-1">🌸</div>
-      <div class="flower flower-2">🌺</div>
-      <div class="flower flower-3">🌼</div>
-      <div class="flower flower-4">🌻</div>
-      <div class="flower flower-5">🌷</div>
-      <div class="flower flower-6">🌹</div>
+      <!-- Beautiful Flowers -->
+      <div class="flower flower-1">
+        <img
+          src="https://i.pinimg.com/originals/be/2f/73/be2f73c89b135ad664ea51975d0e23ec.png"
+          alt="pink flower"
+        />
+      </div>
+      <div class="flower flower-2">
+        <img
+          src="https://i.pinimg.com/originals/a0/6f/99/a06f990b0a2a3e44e8c5d404f2b64d11.png"
+          alt="yellow flower"
+        />
+      </div>
+      <div class="flower flower-3">
+        <img
+          src="https://i.pinimg.com/originals/68/a5/7f/68a57f6f5e4e85f7ab02d88b9e6b6c61.png"
+          alt="purple flower"
+        />
+      </div>
+      <div class="flower flower-4">
+        <img
+          src="https://i.pinimg.com/originals/be/2f/73/be2f73c89b135ad664ea51975d0e23ec.png"
+          alt="pink flower"
+        />
+      </div>
+      <div class="flower flower-5">
+        <img
+          src="https://i.pinimg.com/originals/a0/6f/99/a06f990b0a2a3e44e8c5d404f2b64d11.png"
+          alt="yellow flower"
+        />
+      </div>
+      <div class="flower flower-6">
+        <img
+          src="https://i.pinimg.com/originals/68/a5/7f/68a57f6f5e4e85f7ab02d88b9e6b6c61.png"
+          alt="purple flower"
+        />
+      </div>
 
       <!-- Sparkles -->
-      <div class="sparkle sparkle-1"></div>
-      <div class="sparkle sparkle-2"></div>
-      <div class="sparkle sparkle-3"></div>
-      <div class="sparkle sparkle-4"></div>
-      <div class="sparkle sparkle-5"></div>
+      <div class="sparkle sparkle-1">
+        <img
+          src="https://i.pinimg.com/originals/68/14/48/68144878f31ff0e4c184e5c3e21f10b7.png"
+          alt="sparkle"
+        />
+      </div>
+      <div class="sparkle sparkle-2">
+        <img
+          src="https://i.pinimg.com/originals/68/14/48/68144878f31ff0e4c184e5c3e21f10b7.png"
+          alt="sparkle"
+        />
+      </div>
+      <div class="sparkle sparkle-3">
+        <img
+          src="https://i.pinimg.com/originals/68/14/48/68144878f31ff0e4c184e5c3e21f10b7.png"
+          alt="sparkle"
+        />
+      </div>
+      <div class="sparkle sparkle-4">
+        <img
+          src="https://i.pinimg.com/originals/68/14/48/68144878f31ff0e4c184e5c3e21f10b7.png"
+          alt="sparkle"
+        />
+      </div>
+      <div class="sparkle sparkle-5">
+        <img
+          src="https://i.pinimg.com/originals/68/14/48/68144878f31ff0e4c184e5c3e21f10b7.png"
+          alt="sparkle"
+        />
+      </div>
+
+      <!-- Butterflies -->
+      <div class="butterfly butterfly-1">
+        <img
+          src="https://i.pinimg.com/originals/0a/f6/73/0af673e88da3f4c1e41f7e8b8e2e8a3e.png"
+          alt="butterfly"
+        />
+      </div>
+      <div class="butterfly butterfly-2">
+        <img
+          src="https://i.pinimg.com/originals/0a/f6/73/0af673e88da3f4c1e41f7e8b8e2e8a3e.png"
+          alt="butterfly"
+        />
+      </div>
     </div>
 
-    <!-- Tinkerbell Character -->
-    <div class="tinkerbell" id="tinkerbell">🧚‍♀️</div>
+    <!-- Tinkerbell Character - Beautiful PNG -->
+    <div class="tinkerbell" id="tinkerbell">
+      <img
+        src="https://i.pinimg.com/originals/25/0d/f8/250df829ab6f8c38691f3935f89a3eb3.png"
+        alt="Tinkerbell Flying"
+      />
+    </div>
 
     <!-- Navigation -->
     <nav>
       <div class="container">
         <div class="nav-content">
-          <div class="logo">Dahami ✨</div>
+          <div class="logo">
+            <img
+              src="https://i.pinimg.com/originals/68/14/48/68144878f31ff0e4c184e5c3e21f10b7.png"
+              alt="sparkle"
+            />
+            Dahami
+          </div>
           <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#skills">Skills</a></li>
@@ -788,7 +934,7 @@
             Sprinkling magic into every design! Like Tinkerbell spreading pixie
             dust, I create enchanting digital experiences that bring joy and
             wonder. Currently studying IT at SLIATE, I blend creativity with
-            code to make the web more beautiful! 🌸
+            code to make the web more beautiful!
           </p>
           <div class="fairy-buttons">
             <a href="#projects" class="btn-fairy btn-primary"
@@ -807,11 +953,16 @@
       <div class="container">
         <div class="section-title">
           <h2>Magical Skills</h2>
-          <p>Powers I use to create wonder ✨</p>
+          <p>Powers I use to create wonder</p>
         </div>
         <div class="skills-grid">
           <div class="magic-card">
-            <div class="skill-icon">🎨</div>
+            <div class="skill-icon">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/5968/5968520.png"
+                alt="design"
+              />
+            </div>
             <h3>UI/UX Design</h3>
             <p>
               Crafting beautiful, whimsical interfaces with Figma that make
@@ -820,7 +971,12 @@
             </p>
           </div>
           <div class="magic-card">
-            <div class="skill-icon">💻</div>
+            <div class="skill-icon">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/1005/1005141.png"
+                alt="code"
+              />
+            </div>
             <h3>Frontend Magic</h3>
             <p>
               Bringing designs to life with HTML, CSS, and JavaScript! I create
@@ -829,7 +985,12 @@
             </p>
           </div>
           <div class="magic-card">
-            <div class="skill-icon">☕</div>
+            <div class="skill-icon">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/226/226777.png"
+                alt="java"
+              />
+            </div>
             <h3>Java Spells</h3>
             <p>
               Building powerful applications with Java! From examination systems
@@ -845,11 +1006,16 @@
       <div class="container">
         <div class="section-title">
           <h2>Magical Projects</h2>
-          <p>Creations from my fairy workshop 🌟</p>
+          <p>Creations from my fairy workshop</p>
         </div>
         <div class="projects-grid">
           <div class="project-card">
-            <div class="project-image">💇</div>
+            <div class="project-image">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/3176/3176336.png"
+                alt="salon"
+              />
+            </div>
             <div class="project-content">
               <div class="project-tags">
                 <span class="tag">HTML</span>
@@ -865,7 +1031,12 @@
             </div>
           </div>
           <div class="project-card">
-            <div class="project-image">📝</div>
+            <div class="project-image">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/3976/3976625.png"
+                alt="education"
+              />
+            </div>
             <div class="project-content">
               <div class="project-tags">
                 <span class="tag">Java</span>
@@ -881,7 +1052,12 @@
             </div>
           </div>
           <div class="project-card">
-            <div class="project-image">🎯</div>
+            <div class="project-image">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png"
+                alt="figma"
+              />
+            </div>
             <div class="project-content">
               <div class="project-tags">
                 <span class="tag">Figma</span>
@@ -908,16 +1084,36 @@
           <p>
             Have a project that needs a touch of fairy dust? I'd love to hear
             from you! Let's collaborate and create something truly enchanting
-            together. 🌸
+            together.
           </p>
           <a href="mailto:dahami@example.com" class="btn-fairy btn-primary"
             >Send a Message 💌</a
           >
           <div class="contact-links">
-            <a href="#" class="contact-link">📧</a>
-            <a href="#" class="contact-link">💼</a>
-            <a href="#" class="contact-link">🐱</a>
-            <a href="#" class="contact-link">🔗</a>
+            <a href="#" class="contact-link">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/732/732200.png"
+                alt="email"
+              />
+            </a>
+            <a href="#" class="contact-link">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/174/174857.png"
+                alt="linkedin"
+              />
+            </a>
+            <a href="#" class="contact-link">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/733/733553.png"
+                alt="github"
+              />
+            </a>
+            <a href="#" class="contact-link">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/174/174876.png"
+                alt="twitter"
+              />
+            </a>
           </div>
         </div>
       </div>
@@ -927,7 +1123,7 @@
     <footer>
       <div class="container">
         <p>
-          © 2024 Dahami Jayawardhana ✨ Designed with fairy magic and lots of
+          © 2026 Dahami Jayawardhana ✨ Designed with fairy magic and lots of
           love 💚
         </p>
       </div>
@@ -976,16 +1172,18 @@
 
       // Pixie Dust Trail
       function createPixieDust(x, y) {
-        for (let i = 0; i < 15; i++) {
+        for (let i = 0; i < 12; i++) {
           setTimeout(() => {
             const dust = document.createElement("div");
             dust.className = "pixie-dust";
-            dust.style.left = x + Math.random() * 40 - 20 + "px";
-            dust.style.top = y + Math.random() * 40 - 20 + "px";
+            dust.innerHTML =
+              '<img src="https://i.pinimg.com/originals/68/14/48/68144878f31ff0e4c184e5c3e21f10b7.png" alt="dust">';
+            dust.style.left = x + (Math.random() * 60 - 30) + "px";
+            dust.style.top = y + (Math.random() * 60 - 30) + "px";
             document.body.appendChild(dust);
 
-            setTimeout(() => dust.remove(), 1000);
-          }, i * 50);
+            setTimeout(() => dust.remove(), 1500);
+          }, i * 100);
         }
       }
 
@@ -994,10 +1192,10 @@
         const rect = tinkerbell.getBoundingClientRect();
         createPixieDust(rect.left + rect.width / 2, rect.top + rect.height / 2);
 
-        tinkerbell.style.transform = "scale(1.2) rotate(360deg)";
+        tinkerbell.style.transform = "scale(1.3) rotate(360deg)";
         setTimeout(() => {
           tinkerbell.style.transform = "scale(1) rotate(0deg)";
-        }, 500);
+        }, 600);
       });
 
       // Smooth scroll for navigation
@@ -1013,5 +1211,3 @@
     </script>
   </body>
 </html>
-
-<!-- Tinker bell--> 
